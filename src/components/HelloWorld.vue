@@ -1,13 +1,18 @@
 <template>
   <div>
     {{msg}}
+    <parent></parent>
   </div>
 </template>
 
 <script>
+import Parent from './test/parent'
 export default {
   name:'helloWorld',
-  data(){
+  components: {
+    Parent
+  },
+  data () {
    return {
     msg: 'hi'
    }
