@@ -8,10 +8,16 @@
       <i-form-item label="邮箱" prop="mail">
         <i-input v-model="formValidate.mail"></i-input>
       </i-form-item>
-      <i-form-item label="复选框" prop="check">
+      <i-form-item label="单个复选框" prop="check">
         <i-checkbox v-model="formValidate.check">
           aaa
         </i-checkbox>
+      </i-form-item>
+      <i-form-item label="多个复选框" prop="group">
+        <i-checkbox-group v-model="formValidate.group">
+          <i-checkbox :label="check3">第一个</i-checkbox>
+          <i-checkbox :label="check4">第二个</i-checkbox>
+        </i-checkbox-group>
       </i-form-item>
     </i-form>
     <button @click="handleSubmit">提交</button>
@@ -23,20 +29,23 @@
 import iForm from '../form/form'
 import iFormItem from '../form/form-item'
 import iInput from '../form/input'
+import iCheckboxGroup from '../checkbox/checkbox-group'
 import iCheckbox from '../checkbox/checkbox'
 export default {
   components: {
     iForm,
     iFormItem,
     iInput,
-    iCheckbox
+    iCheckbox,
+    iCheckboxGroup
   },
   data () {
     return {
       formValidate: {
         name: '',
         mail: '',
-        check: false
+        check: false,
+        group: []
       },
       ruleValidate: {
         name: [
@@ -46,8 +55,13 @@ export default {
           { required: true, message: '邮箱不能为空', trigger: 'blur' },
           { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
         ],
-        check: []
-      }
+        check: [],
+        group: [
+          { type: 'array', required: true, message: '复选框必选', trigger: 'blur' }
+        ]
+      },
+      check3: 'a',
+      check4: 'b'
     }
   },
   mounted () {
