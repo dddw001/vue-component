@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import TestForm from '@/components/test/test-form.vue'
 import TestCheckbox from '@/components/test/test-checkbox.vue'
+import TestModel from '@/components/test/test-model/parent.vue'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export default new Router({
     {
       path: '/test-checkbox',
       component: TestCheckbox
+    },
+    {
+      path: '/test-model',
+      component: TestModel
     }
   ]
 })
